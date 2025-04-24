@@ -1,0 +1,9 @@
+# Use the official MySQL image as a base
+FROM mysql:5.7
+
+# Copy initialization SQL file (optional, if you have schema or setup SQL files)
+COPY ./message.sql /docker-entrypoint-initdb.d/
+
+# Expose MySQL port
+EXPOSE 3306
+
