@@ -6,3 +6,25 @@ docker run --name mysql-container --network php-network \
 docker run --name php-app --network php-network \
   --env-file .env -p 8090:8090 -d php-app
 
+=========================================================
+
+To run it by env passing in docker command
+
+docker build -t php-app .
+
+
+docker build -t mysql-db -f Dockerfiledb .
+
+docker network create php-network
+
+docker run --name mysql-container --network php-network -e MYSQL_ROOT_PASSWORD=<MYSQL_PASSWORD> -e MYSQL_DATABASE=todo_db -d mysql-db
+
+
+docker run --name php-app --network php-network -d -p 8090:8090 \
+-e DB_HOST=mysql-container \
+-e DB_USER=root \
+-e DB_PASSWORD=123 \
+-e DB_NAME=todo_list \
+php-app
+
+
