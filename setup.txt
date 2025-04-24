@@ -1,0 +1,8 @@
+docker rm -f php-app mysql-container
+
+docker run --name mysql-container --network php-network \
+  --env-file .env -d mysql-container
+
+docker run --name php-app --network php-network \
+  --env-file .env -p 8090:8090 -d php-app
+
