@@ -17,7 +17,7 @@ docker build -t mysql-db -f Dockerfiledb .
 
 docker network create php-network
 
-docker run --name mysql-container --network php-network -e MYSQL_ROOT_PASSWORD=<MYSQL_PASSWORD> -e MYSQL_DATABASE=todo_db -d mysql-db
+docker run --name mysql-container --network php-network -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=todo_list -d mysql-db
 
 
 docker run --name php-app --network php-network -d -p 8090:8090 \
