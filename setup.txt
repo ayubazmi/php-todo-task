@@ -1,5 +1,6 @@
 docker rm -f php-app mysql-container
-
+docker build -t php-app .
+docker build -t mysql-container . -f Dockerfiledb
 docker run --name mysql-container --network php-network \
   --env-file .env -d mysql-container
 
